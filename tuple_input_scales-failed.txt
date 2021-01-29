@@ -1,0 +1,23 @@
+input_scales: CallNode(Op(device_copy), [Tuple([Constant(0.1574291), Constant(0.1574291)])], relay.attrs.DeviceCopyAttrs(0x41f62f8), [TupleTypeNode([TensorType([], float32), TensorType([], float32)])])
+Traceback (most recent call last):
+  File "test_yolo.py", line 94, in <module>
+    graph, lib, params = relay.build(mod, target=target, target_host=target_host, params=params)
+  File "/home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/python/tvm/relay/build_module.py", line 255, in build
+    graph_json, mod, params = bld_mod.build(mod, target, target_host, params)
+  File "/home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/python/tvm/relay/build_module.py", line 121, in build
+    self._build(mod, target, target_host)
+  File "/home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/python/tvm/_ffi/_ctypes/packed_func.py", line 225, in __call__
+    raise get_last_ffi_error()
+tvm._ffi.base.TVMError: Traceback (most recent call last):
+  [bt] (8) /home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/build/libtvm.so(tvm::relay::MixedModeMutator::VisitExpr(tvm::RelayExpr const&)+0x3af) [0x7fd76219a97f]
+  [bt] (7) /home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/build/libtvm.so(tvm::relay::MixedModeMutator::VisitLeaf(tvm::RelayExpr const&)+0x63) [0x7fd762199da3]
+  [bt] (6) /home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/build/libtvm.so(tvm::relay::PostOrderRewriter::DispatchVisitExpr(tvm::RelayExpr const&)+0x41) [0x7fd7621a2231]
+  [bt] (5) /home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/build/libtvm.so(tvm::relay::ExprRewriter::Rewrite(tvm::RelayExpr const&, tvm::RelayExpr const&)+0x89) [0x7fd761f5cee9]
+  [bt] (4) /home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/build/libtvm.so(tvm::relay::ExprRewriter::InitVTable()::{lambda(tvm::runtime::ObjectRef const&, tvm::relay::ExprRewriter*, tvm::RelayExpr const&)#6}::_FUN(tvm::runtime::ObjectRef const&, tvm::relay::ExprRewriter*, tvm::RelayExpr const&)+0x28) [0x7fd761f5a358]
+  [bt] (3) /home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/build/libtvm.so(tvm::relay::legalize::Legalizer::Rewrite_(tvm::relay::CallNode const*, tvm::RelayExpr const&)+0xa63) [0x7fd76206e4f3]
+  [bt] (2) /home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/build/libtvm.so(tvm::runtime::TypedPackedFunc<tvm::RelayExpr (tvm::Attrs const&, tvm::runtime::Array<tvm::RelayExpr, void> const&, tvm::runtime::Array<tvm::Type, void> const&)>::AssignTypedLambda<tvm::RelayExpr (*)(tvm::Attrs const&, tvm::runtime::Array<tvm::RelayExpr, void> const&, tvm::runtime::Array<tvm::Type, void> const&)>(tvm::RelayExpr (*)(tvm::Attrs const&, tvm::runtime::Array<tvm::RelayExpr, void> const&, tvm::runtime::Array<tvm::Type, void> const&))::{lambda(tvm::runtime::TVMArgs const&, tvm::runtime::TVMRetValue*)#1}::operator()(tvm::runtime::TVMArgs const&, tvm::runtime::TVMRetValue*) const+0x21f) [0x7fd7621c5b6f]
+  [bt] (1) /home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/build/libtvm.so(tvm::relay::qnn::ConcatenateQnnCanonicalize(tvm::Attrs const&, tvm::runtime::Array<tvm::RelayExpr, void> const&, tvm::runtime::Array<tvm::Type, void> const&)+0xe3d) [0x7fd7621cc74d]
+  [bt] (0) /home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/build/libtvm.so(+0xeefa62) [0x7fd7621c7a62]
+  File "/home/aquapapaya/workshop/repo/tvm0807/incubator-tvm/src/relay/qnn/op/concatenate.cc", line 163
+TVMError: Check failed: tuple_input_scales != nullptr: 
+
