@@ -165,12 +165,10 @@ Expr ConcatenateQnnCanonicalize(const Attrs& attrs, const Array<Expr>& new_args,
     std::cout << "Find an input_scales as CallNode..." << std::endl;
     auto tuple_input_scales_in_call_node = input_scales.as<CallNode>()->args;
     auto tuple_input_scales = tuple_input_scales_in_call_node[0].as<TupleNode>();
-
     CHECK(tuple_input_scales != nullptr);
 
     auto tuple_input_zero_points_in_call_node = input_zero_points.as<CallNode>()->args;
     auto tuple_input_zero_points = tuple_input_zero_points_in_call_node[0].as<TupleNode>();
-    //auto tuple_input_zero_points = input_zero_points.as<TupleNode>();
     CHECK(tuple_input_zero_points != nullptr);
 
     int idx = 0;
